@@ -196,9 +196,9 @@ def main():
     if temp1[0] not in org[0]:
         org.append(temp1[0])
         index_org = len(org)-1
-    if temp3[0] not in org[0]:
+    '''if temp3[0] not in org[0]:
         org.append(temp3[0])
-        index_org = len(org)-1
+        index_org = len(org)-1 '''
     if len(org) == 0:
         org.append("ไม่พบข้อมูล")
     if len(topic) == 0:

@@ -124,6 +124,8 @@ def main():
                 '(รองศาสตราจารย์ ดร.','(น.ส.','(รองศาสตราจารย์','(ผู้ช่วยศาสตราจารย์ ตร.','(ผศ. ดร.','(รศ.คร.','(ผศ.ดร.']
     #check_keyword = True # true->enable false->disable
     line_no = 0
+    temp1 = [] #ภาค
+    temp2 = [] #คณะ 
     with open('dict.txt', encoding="UTF-8") as dict_file:
         word_list = list(set([w.rstrip() for w in dict_file.readlines()]))
         wordcut = Wordcut(word_list)
@@ -138,10 +140,12 @@ def main():
                 candidate = pylcs.lcs_of_list(ele,keyword)
                 chosen = max(candidate)
                 indexOFchosen = candidate.index(chosen)
+                if 'ภาค' in ele: temp1.append(ele)
+                if 'คณะ' in ele: temp2.append(ele)
                 if (abs(len(keyword[indexOFchosen]) - chosen) <= 2 and chosen > 0) or '\n' in ele:
                     #print(f'candidate is {candidate}, chosen is {chosen}, index is {indexOFchosen}, text is {keyword[indexOFchosen]}')
                     #print(f'chosen: {inline}, {keyword[indexOFchosen]}')
-                    #print(f'ele: {ele}')
+                    print(f'ele: {ele}')
                     if (lock_keep == False and line_no > 0) or '\n' in ele: 
                         #print(f'op: {op}, res: {res}')        
                         if op == 1: 
@@ -185,10 +189,12 @@ def main():
                         res += ' '
                 #print(f'op: {op}, res: {res}')
             line_no += 1  
-    print(org,topic,toUser,byUser,tel,date,no)    
+    print(org,topic,toUser,byUser,tel,date,no)  
+    print(temp1,temp2)  
     #print(org[0],topic[0],toUser[0],tel[0],date[0])   
     if len(org) == 0:
-        org.append("ไม่พบข้อมูล")
+        if len(temp1) > 0: org.append(temp1[0])
+        else: org.append("ไม่พบข้อมูล")
     if len(topic) == 0:
         topic.append("ไม่พบข้อมูล")
     if len(toUser) == 0:

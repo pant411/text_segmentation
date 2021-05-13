@@ -190,13 +190,13 @@ def main():
                 #print(f'op: {op}, res: {res}')
             line_no += 1  
     print(org,topic,toUser,byUser,tel,date,no)  
-    print(temp1,temp2)  
+    print(f'temp1: {temp1},temp2: {temp2}')  
     #print(org[0],topic[0],toUser[0],tel[0],date[0])   
     index_org = 0
-    if temp1[0] not in org[0]:
+    '''if temp1[0] not in org[0]:
         org.append(temp1[0])
         index_org = len(org)-1
-    '''if temp3[0] not in org[0]:
+    if temp3[0] not in org[0]:
         org.append(temp3[0])
         index_org = len(org)-1 '''
     if len(org) == 0:
@@ -213,12 +213,12 @@ def main():
         date.append("ไม่พบข้อมูล")
     if len(no) == 0:
         no.append("ไม่พบข้อมูล")
-    print(f'ส่วนราชการ หรือ ส่วนงาน: {org[index_org]}')
+    '''print(f'ส่วนราชการ หรือ ส่วนงาน: {org[index_org]}')
     print(f'เรื่อง: {topic[0]}')
     print(f'เรียน: {toUser[0]}')
     print(f'โทร: {tel[0]}')
     print(f'วันที่ี: {date[0]}')
     print(f'คนเช็น: {byUser[-1]}')
-    print(f'ที่: {no[0]}')
+    print(f'ที่: {no[0]}')'''
 
 main()

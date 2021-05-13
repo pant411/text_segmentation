@@ -120,11 +120,11 @@ def main():
     data = open("docs/{}.txt".format(doc),"r")
     org,tel,topic,toUser,byUser,date,no = [],[],[],[],[],[],[] #org=ส่วนงานหรือส่วนราชการ tel=เบอร์โทร topic=เรื่อง toUser=เรียน byUser=คนเซ็น date=วันที่ no=ที่ศธ
     #check1,check2,check3,check4,check5,check6 = False,False,False,False,False,False
-    keyword = ['ส่วนราชการ','ส่วนงาน','เรื่อง','เรียน','วันที่','โทร.','ที่','(นาย','(นาง','(นางสาว','(รศ. ดร.',
-                '(รองศาสตราจารย์ ดร.','(น.ส.','(รองศาสตราจารย์','(ผู้ช่วยศาสตราจารย์ ตร.','(ผศ. ดร.','(รศ.คร.','(ผศ.ดร.']
+    keyword = ['ส่วนราชการ','ส่วนงาน','เรื่อง','เรียน','วันที่','โทร.','ที่','นาย','นาง','นางสาว',
+               'น.ส.','รองศาสตราจารย์','ผู้ช่วยศาสตราจารย์','ผศ. ดร.','รศ.คร.','ผศ.ดร.','ดร.','ผศ.','รศ.']
     #check_keyword = True # true->enable false->disable
     line_no = 0
-    temp1,temp2,temp3 = [],[],[] #temp1=ภาค temp2=คณะ temp3=มหาวิทยาลัย
+    tag1,tag2,tag3 = [],[],[] #tag1=ภาค tag2=คณะ tag3=มหาวิทยาลัย
     with open('dict.txt', encoding="UTF-8") as dict_file:
         word_list = list(set([w.rstrip() for w in dict_file.readlines()]))
         wordcut = Wordcut(word_list)
@@ -139,13 +139,13 @@ def main():
                 candidate = pylcs.lcs_of_list(ele,keyword)
                 chosen = max(candidate)
                 indexOFchosen = candidate.index(chosen)
-                if 'ภาค' in ele: temp1.append(ele)
-                if 'คณะ' in ele: temp2.append(ele)
-                if 'มหาวิทยาลัย' in ele: temp3.append(ele)
-                if (abs(len(keyword[indexOFchosen]) - chosen) <= 2 and chosen > 0) or '\n' in ele:
+                if 'ภาควิชา' in ele: tag1.append(ele)
+                if 'คณะ' in ele: tag2.append(ele)
+                if 'มหาวิทยาลัย' in ele: tag3.append(ele)
+                if (abs(len(keyword[indexOFchosen]) - chosen) <= 2) or '\n' in ele:
                     #print(f'candidate is {candidate}, chosen is {chosen}, index is {indexOFchosen}, text is {keyword[indexOFchosen]}')
                     #print(f'chosen: {inline}, {keyword[indexOFchosen]}')
-                    print(f'ele: {ele}')
+                    #print(f'ele: {ele}')
                     if (lock_keep == False and line_no > 0) or '\n' in ele: 
                         #print(f'op: {op}, res: {res}')        
                         if op == 1: 
@@ -190,7 +190,7 @@ def main():
                 #print(f'op: {op}, res: {res}')
             line_no += 1  
     print(org,topic,toUser,byUser,tel,date,no)  
-    print(f'temp1: {temp1},temp2: {temp2}')  
+    print(f'tag1: {tag1},tag2: {tag2},tag3: {tag3}')  
     #print(org[0],topic[0],toUser[0],tel[0],date[0])   
     index_org = 0
     '''if temp1[0] not in org[0]:
@@ -213,12 +213,12 @@ def main():
         date.append("ไม่พบข้อมูล")
     if len(no) == 0:
         no.append("ไม่พบข้อมูล")
-    '''print(f'ส่วนราชการ หรือ ส่วนงาน: {org[index_org]}')
+    print(f'ส่วนราชการ หรือ ส่วนงาน: {org[index_org]}')
     print(f'เรื่อง: {topic[0]}')
     print(f'เรียน: {toUser[0]}')
     print(f'โทร: {tel[0]}')
     print(f'วันที่ี: {date[0]}')
     print(f'คนเช็น: {byUser[-1]}')
-    print(f'ที่: {no[0]}')'''
+    print(f'ที่: {no[0]}')
 
 main()

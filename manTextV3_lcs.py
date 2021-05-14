@@ -77,7 +77,14 @@ def main():
                         res += ' '
                 #print(f'op: {op}, res: {res}')
             line_no += 1  
-    print(org,topic,toUser,byUser,tel,date,no)  
+    #print(org,topic,toUser,byUser,tel,date,no)  
+    print(f'org: {org}')
+    print(f'topic: {topic}')
+    print(f'toUser: {toUser}')
+    print(f'byUser: {byUser}')
+    print(f'tel: {tel}')
+    print(f'date: {date}')
+    print(f'no: {no}')
     print(f'tag1: {tag1},tag2: {tag2},tag3: {tag3}')  
     #print(org[0],topic[0],toUser[0],tel[0],date[0])   
     index_org = 0

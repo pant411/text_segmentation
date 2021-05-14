@@ -121,7 +121,7 @@ def main():
     org,tel,topic,toUser,byUser,date,no = [],[],[],[],[],[],[] #org=ส่วนงานหรือส่วนราชการ tel=เบอร์โทร topic=เรื่อง toUser=เรียน byUser=คนเซ็น date=วันที่ no=ที่ศธ
     #check1,check2,check3,check4,check5,check6 = False,False,False,False,False,False
     keyword = ['ส่วนราชการ','ส่วนงาน','เรื่อง','เรียน','วันที่','โทร.','ที่','นาย','นาง','นางสาว',
-               'น.ส.','รองศาสตราจารย์','ผู้ช่วยศาสตราจารย์','ผศ. ดร.','รศ.คร.','ผศ.ดร.','ดร.','ผศ.','รศ.']
+               'น.ส.','รองศาสตราจารย์','ผู้ช่วยศาสตราจารย์','รศ.คร.','ผศ.ดร.','ดร.','ผศ.','รศ.']
     #check_keyword = True # true->enable false->disable
     line_no = 0
     tag1,tag2,tag3 = [],[],[] #tag1=ภาค tag2=คณะ tag3=มหาวิทยาลัย

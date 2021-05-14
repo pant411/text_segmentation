@@ -8,6 +8,6 @@
 3. จากนั้นจะโชว์ผลลัพธ์ขึ้นมา
 
 หมายเหตุ
-test_wordcut.py มีไว้สำหรับเช็คผลลัพธ์ของการตัดคำเท่านั้น
-วิธีการใช้งาน pylcs https://pypi.org/project/pylcs/
-วิธีการใช้งาน wordcut https://github.com/veer66/wordcutpy
+- test_wordcut.py มีไว้สำหรับเช็คผลลัพธ์ของการตัดคำเท่านั้น
+- วิธีการใช้งาน pylcs https://pypi.org/project/pylcs/
+- วิธีการใช้งาน wordcut https://github.com/veer66/wordcutpy

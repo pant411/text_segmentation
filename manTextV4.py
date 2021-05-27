@@ -14,9 +14,9 @@ def read_dict():
     return wordcut
 
 def select_tag(indexOFchosen):
-    if indexOFchosen <= 1: op = 1 #collect in org
-    elif indexOFchosen >= 7: op = 7 #keep in byuser   
-    else: op = indexOFchosen
+    if indexOFchosen <= 1: op = 1 #store in org
+    elif indexOFchosen >= 7: op = 7 #store in byuser   
+    else: op = indexOFchosen #
     return op 
 
 def store_tag(op,text,org,tel,topic,toUser,byUser,date,no):
@@ -72,6 +72,7 @@ def main():
                 line_no += 1
                 continue             
             if lock_store == False and ele != ')':
+                if (ele == ' ') or ('ดร.' in ele and op == 7): continue
                 res = res + ele
                 if (op == 7 or op == 4):
                     res += ' '

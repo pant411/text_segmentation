@@ -36,11 +36,15 @@ def read_keyword():
     my_file.close()    
     return content_list
 
+
 def test_tag(ele,tag1,tag2,tag3):
     if 'ภาควิชา' in ele: tag1.append(ele)
     if 'คณะ' in ele: tag2.append(ele)
     if 'มหาวิทยาลัย' in ele: tag3.append(ele)    
     return tag1,tag2,tag3
+ 
+def score_test():
+    pass   
 
 def main():
     data = read_text()

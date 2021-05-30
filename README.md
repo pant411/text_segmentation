@@ -3,7 +3,7 @@
 - pip install -r requirements.txt 
 
 วิธีการใช้งาน
-1. รัน python manTextV3_lcs.py ใน terminal/command  
+1. รัน python manTextV4.py ใน terminal/command  
 2. จะขึ้นมาในกรอกชื่อไฟล์ txt ที่อยู่ใน folder docs เช่น ถ้าต้องการดูผลลัพธ์ของ ไฟล์ real01-03.txt ให้พิมพ์ real01-03 ลงไป
 3. จากนั้นจะโชว์ผลลัพธ์ขึ้นมา
 

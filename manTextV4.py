@@ -76,7 +76,7 @@ def main():
                 line_no += 1
                 continue             
             if lock_store == False and ele != ')':
-                if 'ดร.' in ele and op == 7: continue
+                if ('ดร.' in ele or 'ตร.' in ele or 'ตร' in ele) and op == 7: continue
                 res = res + ele
                 if (op == 7 or op == 4):
                     res += ' '

@@ -37,10 +37,32 @@ def read_keyword():
     return content_list
 
 
-def test_tag(ele,tag1,tag2,tag3):
-    if 'ภาควิชา' in ele: tag1.append(ele)
-    if 'คณะ' in ele: tag2.append(ele)
-    if 'มหาวิทยาลัย' in ele: tag3.append(ele)    
+def org_tag(ele,tag1,tag2,tag3,keyword):
+    #if 'ภาควิชา' in ele: tag1.append(ele)
+    #if 'คณะ' in ele: tag2.append(ele)
+    #if 'มหาวิทยาลัย' in ele: tag3.append(ele)    
+    x_tag1 = ele.find('ภาควิชา')
+    x_tag2 = ele.find('คณะ')
+    x_tag3 = ele.find('มหาวิทยาลัย')
+    x_tag4 = ele.find('สถาน')
+    x_tag5 = ele.find('สำนัก')
+    x_tag6 = ele.find('สภา')
+    x_tag7 = ele.find('กรม')
+    x_tag8 = ele.find('กอง')
+    res = ''
+    if x_tag1 != -1: res = ele[x_tag1:len(ele)-1]
+    elif x_tag2 != -1: res = ele[x_tag2:len(ele)-1]
+    elif x_tag3 != -1: res = ele[x_tag3:len(ele)-1]
+    elif x_tag4 != -1: res = ele[x_tag4:len(ele)-1]
+    elif x_tag5 != -1: res = ele[x_tag5:len(ele)-1]
+    elif x_tag6 != -1: res = ele[x_tag6:len(ele)-1]
+    elif x_tag7 != -1: res = ele[x_tag7:len(ele)-1]
+    elif x_tag8 != -1: res = ele[x_tag8:len(ele)-1]
+    space = res.find(' ')
+    if space != -1:
+        res = res[:space]
+    if res != '':
+        tag1.append(res)
     return tag1,tag2,tag3
  
 def score_test():
@@ -56,6 +78,7 @@ def main():
     wordcut = read_dict()
     for line in data.readlines():
         res = ''
+        tag1,tag2,tag3 = org_tag(line,tag1,tag2,tag3,keyword)
         inline = wordcut.tokenize(line)
         inline = list(map(lambda s: s.strip(), inline))
         inline.append('\n')
@@ -65,7 +88,6 @@ def main():
             candidate = pylcs.lcs_of_list(ele,keyword)
             chosen = max(candidate)
             indexOFchosen = candidate.index(chosen)
-            tag1,tag2,tag3 = test_tag(ele,tag1,tag2,tag3)
             if (abs(len(keyword[indexOFchosen]) - chosen) <= 2) or '\n' in ele or ele in keyword:
                 if (lock_store == False and line_no > 0) or '\n' in ele:      
                     org,tel,topic,toUser,byUser,date,no = store_tag(op,res,org,tel,topic,toUser,byUser,date,no)

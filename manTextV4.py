@@ -61,6 +61,7 @@ def org_tag(ele,tag1):
     if res != '':
         tag1.append(res)
     return tag1
+
  
 def score_test():
     data = read_text()

@@ -41,11 +41,11 @@ def org_tag(ele,tag1):
     x_tag1 = ele.find('ภาควิชา')
     x_tag2 = ele.find('คณะ')
     x_tag3 = ele.find('มหาวิทยาลัย')
-    x_tag4 = ele.find('สถาน')
+    x_tag4 = ele.find('กอง')
     x_tag5 = ele.find('สำนัก')
-    x_tag6 = ele.find('สภา')
-    x_tag7 = ele.find('กรม')
-    x_tag8 = ele.find('กอง')
+    x_tag6 = ele.find('กรม')
+    x_tag7 = ele.find('สภา')
+    x_tag8 = ele.find('สถาน')
     res = ''
     if x_tag1 != -1: res = ele[x_tag1:len(ele)-1]
     elif x_tag2 != -1: res = ele[x_tag2:len(ele)-1]
@@ -72,8 +72,10 @@ def main():
     keyword = read_keyword()
     line_no = 0
     org,tel,topic,toUser,byUser,date,no = [],[],[],[],[],[],[] #org=ส่วนงานหรือส่วนราชการ tel=เบอร์โทร topic=เรื่อง toUser=เรียน byUser=คนเซ็น date=วันที่ no=ที่ศธ
-    tag1,tag2,tag3 = [],[],[] #tag1=ภาค tag2=คณะ tag3=มหาวิทยาลัย
+    tag1 = [] #tag1=tagสถานที่
     wordcut = read_dict()
+    select_list_org = -1
+    status_select_org = True
     for line in data.readlines():
         res = ''
         tag1 = org_tag(line,tag1)
@@ -86,6 +88,10 @@ def main():
             candidate = pylcs.lcs_of_list(ele,keyword)
             chosen = max(candidate)
             indexOFchosen = candidate.index(chosen)
+            if select_list_org == -1 and status_select_org:
+                if len('บันทึกข้อความ') - pylcs.lcs("บันทึกข้อความ",ele) <=3:
+                    select_list_org = 1 #use org
+                    status_select_org = False
             if (abs(len(keyword[indexOFchosen]) - chosen) <= 2) or '\n' in ele or ele in keyword:
                 if (lock_store == False and line_no > 0) or '\n' in ele:      
                     org,tel,topic,toUser,byUser,date,no = store_tag(op,res,org,tel,topic,toUser,byUser,date,no)
@@ -109,17 +115,17 @@ def main():
     print(f'tel: {tel}')
     print(f'date: {date}')
     print(f'no: {no}')
-    print(f'tag1: {tag1},tag2: {tag2},tag3: {tag3}')  
+    print(f'tag1: {tag1}')  
     #print(org[0],topic[0],toUser[0],tel[0],date[0])   
+    print(f'select {select_list_org}')
+    select_org = []
+    if select_list_org == 1:
+        if len(org) > 0: select_org.append(org[0])
+    elif select_list_org == -1:
+        if len(tag1) > 0: select_org.append(tag1[0])
     index_org = 0
-    '''if temp1[0] not in org[0]:
-        org.append(temp1[0])
-        index_org = len(org)-1
-    if temp3[0] not in org[0]:
-        org.append(temp3[0])
-        index_org = len(org)-1 '''
-    if len(org) == 0:
-        org.append("ไม่พบข้อมูล")
+    if len(select_org) == 0:
+        select_org.append("ไม่พบข้อมูล")
     if len(topic) == 0:
         topic.append("ไม่พบข้อมูล")
     if len(toUser) == 0:
@@ -132,7 +138,7 @@ def main():
         date.append("ไม่พบข้อมูล")
     if len(no) == 0:
         no.append("ไม่พบข้อมูล")
-    print(f'ส่วนราชการ หรือ ส่วนงาน: {org[index_org]}')
+    print(f'ส่วนราชการ หรือ ส่วนงาน: {select_org[index_org]}')
     print(f'เรื่อง: {topic[0]}')
     print(f'เรียน: {toUser[0]}')
     print(f'โทร: {tel[0]}')

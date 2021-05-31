@@ -44,7 +44,8 @@ def test_tag(ele,tag1,tag2,tag3):
     return tag1,tag2,tag3
  
 def score_test():
-    pass   
+    data = read_text()
+
 
 def main():
     data = read_text()
@@ -65,7 +66,7 @@ def main():
             chosen = max(candidate)
             indexOFchosen = candidate.index(chosen)
             tag1,tag2,tag3 = test_tag(ele,tag1,tag2,tag3)
-            if (abs(len(keyword[indexOFchosen]) - chosen) <= 2) or '\n' in ele:
+            if (abs(len(keyword[indexOFchosen]) - chosen) <= 2) or '\n' in ele or ele in keyword:
                 if (lock_store == False and line_no > 0) or '\n' in ele:      
                     org,tel,topic,toUser,byUser,date,no = store_tag(op,res,org,tel,topic,toUser,byUser,date,no)
                     res = ''
@@ -76,7 +77,7 @@ def main():
                 line_no += 1
                 continue             
             if lock_store == False and ele != ')':
-                if ('ดร.' in ele or 'ตร.' in ele or 'ตร' in ele) and op == 7: continue
+                if ('ดร' in ele or 'ดร.' in ele or 'ตร.' in ele or 'ตร' in ele or ele == ' ') and op == 7: continue
                 res = res + ele
                 if (op == 7 or op == 4):
                     res += ' '

@@ -37,10 +37,7 @@ def read_keyword():
     return content_list
 
 
-def org_tag(ele,tag1,tag2,tag3,keyword):
-    #if 'ภาควิชา' in ele: tag1.append(ele)
-    #if 'คณะ' in ele: tag2.append(ele)
-    #if 'มหาวิทยาลัย' in ele: tag3.append(ele)    
+def org_tag(ele,tag1):
     x_tag1 = ele.find('ภาควิชา')
     x_tag2 = ele.find('คณะ')
     x_tag3 = ele.find('มหาวิทยาลัย')
@@ -63,7 +60,7 @@ def org_tag(ele,tag1,tag2,tag3,keyword):
         res = res[:space]
     if res != '':
         tag1.append(res)
-    return tag1,tag2,tag3
+    return tag1
  
 def score_test():
     data = read_text()
@@ -78,11 +75,11 @@ def main():
     wordcut = read_dict()
     for line in data.readlines():
         res = ''
-        tag1,tag2,tag3 = org_tag(line,tag1,tag2,tag3,keyword)
+        tag1 = org_tag(line,tag1)
         inline = wordcut.tokenize(line)
         inline = list(map(lambda s: s.strip(), inline))
         inline.append('\n')
-        lock_store = True #initial value
+        lock_store = True #สถานะการเก็บข้อมูลลงlist
         op = -1
         for ele in inline:
             candidate = pylcs.lcs_of_list(ele,keyword)

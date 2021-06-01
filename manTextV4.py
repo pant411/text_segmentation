@@ -46,6 +46,7 @@ def org_tag(ele,tag1):
     x_tag6 = ele.find('กรม')
     x_tag7 = ele.find('สภา')
     x_tag8 = ele.find('สถาน')
+    x_tag9 = ele.find('บริษัท')
     res = ''
     if x_tag1 != -1: res = ele[x_tag1:len(ele)-1]
     elif x_tag2 != -1: res = ele[x_tag2:len(ele)-1]
@@ -55,9 +56,10 @@ def org_tag(ele,tag1):
     elif x_tag6 != -1: res = ele[x_tag6:len(ele)-1]
     elif x_tag7 != -1: res = ele[x_tag7:len(ele)-1]
     elif x_tag8 != -1: res = ele[x_tag8:len(ele)-1]
+    elif x_tag9 != -1: res = ele[x_tag9:len(ele)-1]
     space = res.find(' ')
-    if space != -1:
-        res = res[:space]
+    '''if space != -1:
+        res = res[:space]'''
     if res != '':
         tag1.append(res)
     return tag1

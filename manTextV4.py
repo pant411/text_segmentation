@@ -57,8 +57,8 @@ def org_tag(ele,tag1):
     elif x_tag7 != -1: res = ele[x_tag7:len(ele)-1]
     elif x_tag8 != -1: res = ele[x_tag8:len(ele)-1]
     elif x_tag9 != -1: res = ele[x_tag9:len(ele)-1]
-    space = res.find(' ')
-    '''if space != -1:
+    '''space = res.find(' ')
+    if space != -1:
         res = res[:space]'''
     if res != '':
         tag1.append(res)

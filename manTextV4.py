@@ -94,7 +94,7 @@ def main():
                 if len('บันทึกข้อความ') - pylcs.lcs("บันทึกข้อความ",ele) <=3:
                     select_list_org = 1 #use org
                     status_select_org = False
-            if (abs(len(keyword[indexOFchosen]) - chosen) <= 2) or '\n' in ele or ele in keyword:
+            if (abs(len(keyword[indexOFchosen]) - chosen) <= 1) or '\n' in ele or ele in keyword:
                 if (lock_store == False and line_no > 0) or '\n' in ele:      
                     org,tel,topic,toUser,byUser,date,no = store_tag(op,res,org,tel,topic,toUser,byUser,date,no)
                     res = ''

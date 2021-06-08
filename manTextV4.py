@@ -110,14 +110,14 @@ def main():
                 if (op == 7 or op == 4):
                     res += ' '
         line_no += 1  
-    print(f'org: {org}')
-    print(f'topic: {topic}')
-    print(f'toUser: {toUser}')
-    print(f'byUser: {byUser}')
-    print(f'tel: {tel}')
-    print(f'date: {date}')
-    print(f'no: {no}')
-    print(f'tag1: {tag1}')  
+    #print(f'org: {org}')
+    #print(f'topic: {topic}')
+    #print(f'toUser: {toUser}')
+    #print(f'byUser: {byUser}')
+    #print(f'tel: {tel}')
+    #print(f'date: {date}')
+    #print(f'no: {no}')
+    #print(f'tag1: {tag1}')  
     #print(org[0],topic[0],toUser[0],tel[0],date[0])   
     print(f'select {select_list_org}')
     select_org = []
@@ -140,12 +140,12 @@ def main():
         date.append("ไม่พบข้อมูล")
     if len(no) == 0:
         no.append("ไม่พบข้อมูล")
-    #print(f'ส่วนราชการ หรือ ส่วนงาน: {select_org[index_org]}')
-    #print(f'เรื่อง: {topic[0]}')
-    #print(f'เรียน: {toUser[0]}')
-    #print(f'โทร: {tel[0]}')
-    #print(f'วันที่ี: {date[0]}')
-    #print(f'คนเช็น: {byUser[-1]}')
+    print(f'ส่วนราชการ หรือ ส่วนงาน: {select_org[index_org]}')
+    print(f'เรื่อง: {topic[0]}')
+    print(f'เรียน: {toUser[0]}')
+    print(f'โทร: {tel[0]}')
+    print(f'วันที่ี: {date[0]}')
+    print(f'คนเช็น: {byUser[-1]}')
     #print(f'ที่: {no[0]}')
     return select_org[index_org],topic[0],toUser[0],tel[0],date[0],byUser[-1]
 #main()

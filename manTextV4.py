@@ -66,7 +66,7 @@ def org_tag(ele,tag1):
 
  
 def score_test():
-    data = read_text()
+    pass
 
 
 def main():
@@ -140,12 +140,12 @@ def main():
         date.append("ไม่พบข้อมูล")
     if len(no) == 0:
         no.append("ไม่พบข้อมูล")
-    print(f'ส่วนราชการ หรือ ส่วนงาน: {select_org[index_org]}')
-    print(f'เรื่อง: {topic[0]}')
-    print(f'เรียน: {toUser[0]}')
-    print(f'โทร: {tel[0]}')
-    print(f'วันที่ี: {date[0]}')
-    print(f'คนเช็น: {byUser[-1]}')
-    print(f'ที่: {no[0]}')
-
-main()
+    #print(f'ส่วนราชการ หรือ ส่วนงาน: {select_org[index_org]}')
+    #print(f'เรื่อง: {topic[0]}')
+    #print(f'เรียน: {toUser[0]}')
+    #print(f'โทร: {tel[0]}')
+    #print(f'วันที่ี: {date[0]}')
+    #print(f'คนเช็น: {byUser[-1]}')
+    #print(f'ที่: {no[0]}')
+    return select_org[index_org],topic[0],toUser[0],tel[0],date[0],byUser[-1]
+#main()

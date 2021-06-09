@@ -9,23 +9,24 @@ def read_key(File):
     my_file.close()    
     return content_list
 
-def recall(test,Insert,Replace):
-    return (len(test)-Insert-Replace)/len(test)
+def recall(test,source,Insert,Replace,Delete):
+    return (len(test)-Replace-Delete)/len(source)
 
-def precision(test,source,Insert,Replace):
-    return (len(test)-Insert-Replace)/len(source)
+def precision(test,source,Insert,Replace,Delete):
+    return (len(test)-Replace-Delete)/len(test)
 
 def cal_score(test,source):
-    if test == ' ' or source == ' ':
+    if test == '' or source == '':
         return 0.0,0.0
     t = editops(test,source)
-    print(t)
+    #print(f'data: {t}')
     Insert,Delete,Replace = 0,0,0
     for ele in t:
         Insert += ele.count('insert')
         Delete += ele.count('delete')
         Replace += ele.count('replace')
-    return recall(test,Insert,Replace),precision(test,source,Insert,Replace)
+    print(f'insert {Insert}')
+    return recall(test,source,Insert,Replace,Delete),precision(test,source,Insert,Replace,Delete)
 
 def test_score():
     File = input('please input file: ')
@@ -38,7 +39,7 @@ def test_score():
     print(f'วันที่ี: {date}')
     print(f'คนเช็น: {byUser}')'''
     #print(source)
-    #print(data_test)
+    #print(f'data: {data_test}')
     for i in range(6):
         print(data_test[i],source[i])
         Recall,Precision = cal_score(data_test[i],source[i])

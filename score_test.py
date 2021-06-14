@@ -25,7 +25,7 @@ def cal_score(test,source):
         Insert += ele.count('insert')
         Delete += ele.count('delete')
         Replace += ele.count('replace')
-    print(f'insert {Insert}')
+    #print(f'insert {Insert}')
     return recall(test,source,Insert,Replace,Delete),precision(test,source,Insert,Replace,Delete)
 
 def test_score():
@@ -40,8 +40,9 @@ def test_score():
     print(f'คนเช็น: {byUser}')'''
     #print(source)
     #print(f'data: {data_test}')
+    #print('doc_test                  doc_real')
     for i in range(6):
-        print(data_test[i],source[i])
+        print(f'doc_test: {data_test[i]} doc_real: {source[i]}')
         Recall,Precision = cal_score(data_test[i],source[i])
         print(f'recall: {Recall} precision: {Precision}')
 

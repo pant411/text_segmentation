@@ -115,7 +115,7 @@ def main_mantext(option='run program',doc_test=''):
     #print(f'no: {no}')
     #print(f'tag1: {tag1}')  
     #print(org[0],topic[0],toUser[0],tel[0],date[0])   
-    print(f'select {select_list_org}')
+    #print(f'select {select_list_org}')
     select_org = []
     if select_list_org == 1:
         if len(org) > 0: select_org.append(org[0])
@@ -143,6 +143,6 @@ def main_mantext(option='run program',doc_test=''):
     #print(f'วันที่ี: {date[0]}')
     #print(f'คนเช็น: {byUser[-1]}')
     #print(f'ที่: {no[0]}')
-
     return [select_org[index_org],topic[0],toUser[0],tel[0],date[0],byUser[-1]]
+
 #main_mantext()

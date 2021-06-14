@@ -150,7 +150,7 @@ def display(file):
     print(f'เรื่อง: {res[1]}')
     print(f'เรียน: {res[2]}')
     print(f'โทร: {res[3]}')
-    print(f'วันที่ี: {res[4]}')
+    print(f'วันที่: {res[4]}')
     print(f'คนเช็น: {res[5]}')
 
 #display()

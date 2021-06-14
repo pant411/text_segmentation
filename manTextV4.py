@@ -2,11 +2,9 @@
 from wordcut import Wordcut
 import pylcs
 
-def read_text(option,doc_test):
-    if option == 'run program': 
-        doc = input("file: ")
-        data = open("docs/{}.txt".format(doc),"r")
-    elif option == 'score program': data = open("docs_for_test/{}.txt".format(doc_test),"r")
+def read_text(file):
+    #doc = input("file: ")
+    data = open("docs_for_test/{}.txt".format(file),"r")
     return data
 
 def read_dict():
@@ -65,8 +63,8 @@ def org_tag(ele,tag1):
         tag1.append(res)
     return tag1
 
-def main_mantext(option='run program',doc_test=''):
-    data = read_text(option,doc_test)
+def main_mantext(file):
+    data = read_text(file)
     keyword = read_keyword()
     line_no = 0
     org,tel,topic,toUser,byUser,date,no = [],[],[],[],[],[],[] #org=ส่วนงานหรือส่วนราชการ tel=เบอร์โทร topic=เรื่อง toUser=เรียน byUser=คนเซ็น date=วันที่ no=ที่ศธ
@@ -145,4 +143,15 @@ def main_mantext(option='run program',doc_test=''):
     #print(f'ที่: {no[0]}')
     return [select_org[index_org],topic[0],toUser[0],tel[0],date[0],byUser[-1]]
 
+def display(file):
+    res = main_mantext(file)
+    #print(res)
+    print(f'ส่วนราชการ หรือ ส่วนงาน: {res[0]}')
+    print(f'เรื่อง: {res[1]}')
+    print(f'เรียน: {res[2]}')
+    print(f'โทร: {res[3]}')
+    print(f'วันที่ี: {res[4]}')
+    print(f'คนเช็น: {res[5]}')
+
+#display()
 #main_mantext()

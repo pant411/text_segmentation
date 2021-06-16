@@ -143,7 +143,13 @@ def main_mantext(file):
     #print(f'ที่: {no[0]}')
     return [select_org[index_org],topic[0],toUser[0],tel[0],date[0],byUser[-1]]
 
-def display(file):
+def write_txt(inPut,file):
+    with open('file_txt/a_'+file+'.txt', 'w') as f:
+        for line in inPut:
+            f.write(line)
+            f.write('\n')      
+
+def display(file,write_txt=False):
     res = main_mantext(file)
     #print(res)
     print(f'ส่วนราชการ หรือ ส่วนงาน: {res[0]}')
@@ -152,6 +158,7 @@ def display(file):
     print(f'โทร: {res[3]}')
     print(f'วันที่: {res[4]}')
     print(f'คนเช็น: {res[5]}')
+    if write_txt: write_txt(res,file)
 
 #display()
 #main_mantext()

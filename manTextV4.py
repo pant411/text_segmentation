@@ -147,7 +147,19 @@ def write_txt(inPut,file):
     with open('file_txt/a_'+file+'.txt', 'w') as f:
         for line in inPut:
             f.write(line)
-            f.write('\n')      
+            f.write('\n')   
+
+def test_dict(file):
+    res = main_mantext(file)
+    with open('bigthai.txt', encoding="UTF-8") as dict_file:
+        word_list = list(set([w.rstrip() for w in dict_file.readlines()]))
+        wordcut = Wordcut(word_list)
+    print(wordcut.tokenize(res[0]))
+    print(wordcut.tokenize(res[1]))
+    print(wordcut.tokenize(res[2]))
+    print(wordcut.tokenize(res[3]))
+    print(wordcut.tokenize(res[4]))
+    print(wordcut.tokenize(res[5]))
 
 def display(file,write_txt=False):
     res = main_mantext(file)

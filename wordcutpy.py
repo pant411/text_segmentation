@@ -6,7 +6,7 @@ if __name__ == '__main__':
         wordcut = Wordcut(word_list)
     #wordcut = Wordcut.bigthai()
     print(wordcut.tokenize("ภาควิชาวิศวกรรมคอมพิวเตอร์"))
-    print(wordcut.tokenize("ผู้อํานวยการสถาบันวิจัยและพัฒนาแห่งมก."))
+    print(wordcut.tokenize("นเชิญกล่าวปิดโครงการการจัดแข่งขัน0ล๑5๕๕ก๐๕8๐๐1CampAsai1"))
     print(wordcut.tokenize('คณบดีคณะวิศวกรรมศาสตร์'))
     print(wordcut.tokenize('.๐๒๓๕๓๐๕๕๕ต่อ๑๕๐๓-๑๕๐๕'))
     print(wordcut.tokenize('๑๕  สิงหาคม ๒๕๐๑ '))

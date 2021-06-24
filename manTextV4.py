@@ -36,6 +36,13 @@ def read_keyword():
     my_file.close()    
     return content_list
 
+def read_key(file):
+    my_file = open(f"docs_source/{file}_key.txt", "r")
+    content = my_file.read()
+    content_list = content.split(",")
+    my_file.close()    
+    return content_list
+
 def org_tag(ele,tag1):
     x_tag1 = ele.find('ภาควิชา')
     x_tag2 = ele.find('คณะ')
@@ -160,6 +167,28 @@ def test_dict(file):
     print(wordcut.tokenize(res[3]))
     print(wordcut.tokenize(res[4]))
     print(wordcut.tokenize(res[5]))
+
+def count_score(file):
+    res = main_mantext(file)
+    with open('bigthai.txt', encoding="UTF-8") as dict_file:
+        word_list = list(set([w.rstrip() for w in dict_file.readlines()]))
+        wordcut = Wordcut(word_list)
+    key = read_key(file)
+    score_result = [0,0,0,0,0,0]
+    score_full = []
+    for i in range(6):
+        it = wordcut.tokenize(res[i])
+        space = 0
+        for wc in it:
+            if wc == ' ' or wc == '  ' or wc == '   ': 
+                space += 1
+                continue
+            if key[i].find(wc) != -1 :
+                score_result[i] += 1
+        score_full.append(len(it)-space)
+    print(res)
+    print(score_result)
+    print(score_full)
 
 def display(file,write_txt=False):
     res = main_mantext(file)

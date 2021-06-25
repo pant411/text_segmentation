@@ -186,9 +186,17 @@ def count_score(file):
             if key[i].find(wc) != -1 :
                 score_result[i] += 1
         score_full.append(len(it)-space)
-    print(res)
-    print(score_result)
-    print(score_full)
+    #print(res)
+    #print(score_result)
+    #print(score_full)
+    print(f'ส่วนราชการ หรือ ส่วนงาน: {wordcut.tokenize(res[0])} find->{score_result[0]} total->{score_full[0]}')
+    print(f'เรื่อง: {wordcut.tokenize(res[1])} find->{score_result[1]} total->{score_full[1]}')
+    print(f'เรียน: {wordcut.tokenize(res[2])} find->{score_result[2]} total->{score_full[2]}')
+    print(f'โทร: {wordcut.tokenize(res[3])} find->{score_result[3]} total->{score_full[3]}')
+    print(f'วันที่: {wordcut.tokenize(res[4])} find->{score_result[4]} total->{score_full[4]}')
+    print(f'คนเช็น: {wordcut.tokenize(res[5])} find->{score_result[5]} total->{score_full[5]}')
+
+
 
 def display(file,write_txt=False):
     res = main_mantext(file)

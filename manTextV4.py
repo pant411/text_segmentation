@@ -168,6 +168,19 @@ def test_dict(file):
     print(wordcut.tokenize(res[4]))
     print(wordcut.tokenize(res[5]))
 
+def add_space(text):
+    res = ''
+    lnum = ['๐','๑','๒','๓','๔','๕','๖','๗','๘','๙','1','2','3','4','5','6','7','8','9','0']
+    character = ['(',')','|','!','@','&','“']
+    for i in range(len(text)):
+        if text[i] in lnum and text[i-1] not in lnum:
+            res += (' '+text[i])
+        elif  text[i] in character and text[i-1] not in character:
+            res += (' '+text[i])
+        else:
+            res += text[i]
+    return res
+
 def count_score(file):
     res = main_mantext(file)
     with open('bigthai.txt', encoding="UTF-8") as dict_file:
@@ -177,10 +190,11 @@ def count_score(file):
     score_result = [0,0,0,0,0,0]
     score_full = []
     for i in range(6):
+        res[i] = add_space(res[i])
         it = wordcut.tokenize(res[i])
         space = 0
         for wc in it:
-            if wc == ' ' or wc == '  ' or wc == '   ': 
+            if wc == ' ' or wc == '  ' or wc == '   ' or wc == '    ' or wc == '     ': 
                 space += 1
                 continue
             if key[i].find(wc) != -1 :

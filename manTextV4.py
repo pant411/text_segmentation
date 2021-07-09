@@ -176,7 +176,7 @@ def add_space(text):
         if text[i] in lnum and text[i-1] not in lnum:
             res += (' '+text[i])
         elif  text[i] in character and text[i-1] not in character:
-            res += (' '+text[i])
+            res += (' '+text[i]+' ')
         else:
             res += text[i]
     return res
@@ -209,8 +209,6 @@ def count_score(file):
     print(f'โทร: {wordcut.tokenize(res[3])} find->{score_result[3]} total->{score_full[3]}')
     print(f'วันที่: {wordcut.tokenize(res[4])} find->{score_result[4]} total->{score_full[4]}')
     print(f'คนเช็น: {wordcut.tokenize(res[5])} find->{score_result[5]} total->{score_full[5]}')
-
-
 
 def display(file,write_txt=False):
     res = main_mantext(file)
